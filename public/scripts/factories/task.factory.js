@@ -1,8 +1,5 @@
 myApp.factory('TaskFactory', ['$http', function($http) {
 
-  var testArrayVariable = ['lala', 'Donald Bagel', 'Carolyn'];
-  testArrayVariable.pop();
-
   var factoryTasks = { list: []};
 
   getTasks();
@@ -15,13 +12,14 @@ myApp.factory('TaskFactory', ['$http', function($http) {
       console.log('this is response.data from factory',response.data);
       console.log('this is response from factory', response);
       factoryTasks.list = response.data;
+      // factoryTasks = {
+    //   list: [{name: 'sleep', id: 1}, {name: 'wake up', id: 2}]
+    // }
 
     });
   }
   //this is the public API, if it's not in here, your controller won't see it
   return {
-    testProperty: 'taco',
-    testArray: testArrayVariable,
     allTasks: factoryTasks,
     updateTasks: getTasks
   };

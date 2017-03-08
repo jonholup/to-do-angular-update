@@ -1,6 +1,10 @@
-This came from the factory: {{tc.someThingToGoOnTheView}}
-This came from the factory : {{tc.someRandomArray}}
-  <label>New Task Name</label>
+  <!-- // tc.taskList = {
+  //   list: [{name: 'sleep', id: 1}, {name: 'wake up', id: 2}]
+  // } -->
+
+  <!-- // tc.taskList.list =  [{name: 'sleep', id: 1}, {name: 'wake up', id: 2}] -->
+
+<label>New Task Name</label>
   <input ng-model="tc.newTask.taskName">
   <button ng-click="tc.addTask()">Add Task</button>
   <div ng-repeat="task in tc.taskList.list" ng-class="{complete: task.status, active: !task.status}" class="row col-xs-12">

@@ -6,6 +6,14 @@ myApp.controller('TaskController', ['$http', 'TaskFactory', function($http, Task
   self.someRandomArray = TaskFactory.testArray;
   self.taskList = TaskFactory.allTasks;
 
+  // TaskFactory.allTasks = {
+  //   list: [{name: 'sleep', id: 1}, {name: 'wake up', id: 2}]
+  // }
+
+  // self.taskList = {
+  //   list: [{name: 'sleep', id: 1}, {name: 'wake up', id: 2}]
+  // }
+
 
   self.addTask = function() {
     $http({
