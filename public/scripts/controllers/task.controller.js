@@ -1,10 +1,10 @@
-myApp.controller('TaskController', ['$http', 'TaskFactory', function($http, TaskFactory){
+myApp.controller('TaskController', [ 'TaskFactory', function( TaskFactory){
   console.log('The TaskController was loaded');
   var self = this;
   self.newTask = {};
-  self.someThingToGoOnTheView = TaskFactory.testProperty;
-  self.someRandomArray = TaskFactory.testArray;
   self.taskList = TaskFactory.allTasks;
+
+
 
   // TaskFactory.allTasks = {
   //   list: [{name: 'sleep', id: 1}, {name: 'wake up', id: 2}]
@@ -16,42 +16,20 @@ myApp.controller('TaskController', ['$http', 'TaskFactory', function($http, Task
 
 
   self.addTask = function() {
-    $http({
-      method: 'POST',
-      url: '/tasks',
-      data: self.newTask
-    }).then(function(response){
-      console.log(response);
-      TaskFactory.updateTasks();
-      self.newTask = {};
-    });
+    TaskFactory.addTask(self.newTask);
   }
 
   self.deleteTask = function(taskId) {
-    $http({
-      method: 'DELETE',
-      url: '/tasks/' + taskId
-    }).then(function(response) {
-      TaskFactory.updateTasks();
-    });
+    TaskFactory.deleteTask(taskId);
   }
 
+  // self.completeTask will stary, because it's the glue between controller and view
   self.completeTask = function(taskId) {
-    $http({
-      method: 'PUT',
-      url: '/tasks/complete/' + taskId
-    }).then(function(response) {
-      TaskFactory.updateTasks();
-    });
+    TaskFactory.completeTask(taskId);
   }
 
   self.uncompleteTask = function(taskId) {
-    $http({
-      method: 'PUT',
-      url: '/tasks/uncomplete/' + taskId
-    }).then(function(response) {
-      TaskFactory.updateTasks();
-    });
+    TaskFactory.uncompleteTask(taskId);
   }
 
 
